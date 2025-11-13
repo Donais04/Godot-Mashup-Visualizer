@@ -1,5 +1,11 @@
-# Dodge the Creeps 2D assets
+# Mashup Visualizer
 
-Used by the "Your first 2D game" tutorial:
+This is a way to give your mashup projects a visual element
 
-https://docs.godotengine.org/en/latest/getting_started/first_2d_game/index.html
+Requirements:
+* Godot (https://godotengine.org/download/)
+* REAPER (https://www.reaper.fm/download.php)
+
+
+Example:
+https://youtu.be/v-vopBTXPqw
