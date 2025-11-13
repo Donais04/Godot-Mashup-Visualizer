@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://mhs2xbxs3go"]
+
+[ext_resource type="Script" path="res://base_scene.gd" id="1_fyoyh"]
+[ext_resource type="Script" path="res://canvas_layer.gd" id="3_e2202"]
+[ext_resource type="Texture2D" uid="uid://bs2vd8yjmsmp7" path="res://art/purpBack.jpg" id="4_q2l3t"]
+[ext_resource type="SystemFont" uid="uid://o424mehfhc6f" path="res://fonts/MS Serif Regular.tres" id="5_myf1q"]
+[ext_resource type="Script" path="res://control.gd" id="6_8hove"]
+[ext_resource type="Texture2D" uid="uid://jwdxa7pxgdng" path="res://art/pinkSquareInstGray.png" id="6_fsh2r"]
+[ext_resource type="Texture2D" uid="uid://cx4h8oyahrrld" path="res://art/Grey rectangle.png" id="6_qxklx"]
+[ext_resource type="Texture2D" uid="uid://dgsj6rshcmvsv" path="res://art/enemyFlyingAlt_1.png" id="7_t1sag"]
+[ext_resource type="AudioStream" uid="uid://i8mma6fmqsly" path="res://art/festival.wav" id="8_kk2u6"]
+[ext_resource type="Texture2D" uid="uid://bvdksrkdne8mj" path="res://art/time bar.png" id="8_ls82c"]
+[ext_resource type="SystemFont" uid="uid://ci8dppwy6lcfw" path="res://fonts/Britanic Bold.tres" id="10_mkmcd"]
+[ext_resource type="LabelSettings" uid="uid://d4goodj31odof" path="res://fonts/songLabel.tres" id="10_ya7r7"]
+
+[node name="Base scene" type="Node"]
+script = ExtResource("1_fyoyh")
+wavesPerSecond = 20
+songDelay = 9.2
+
+[node name="PurpBack" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-7, -1)
+scale = Vector2(8, 8)
+texture = ExtResource("4_q2l3t")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("3_e2202")
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.18
+offset_bottom = -186.84
+grow_horizontal = 2
+script = ExtResource("6_8hove")
+waveBoostVocals = 1.5
+spacing = 160
+
+[node name="trackName" type="RichTextLabel" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.015
+anchor_right = 0.108
+anchor_bottom = 0.5
+offset_left = 0.200001
+offset_top = 70.0
+offset_right = -6.36
+offset_bottom = 66.22
+theme_override_fonts/normal_font = ExtResource("5_myf1q")
+theme_override_fonts/mono_font = ExtResource("10_mkmcd")
+theme_override_fonts/italics_font = ExtResource("10_mkmcd")
+theme_override_fonts/bold_italics_font = ExtResource("10_mkmcd")
+theme_override_fonts/bold_font = ExtResource("10_mkmcd")
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 40
+fit_content = true
+scroll_active = false
+
+[node name="trackIcon" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_right = 0.15
+offset_left = -272.64
+offset_right = -163.64
+offset_bottom = 152.0
+texture = ExtResource("7_t1sag")
+
+[node name="wave" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_qxklx")
+
+[node name="trackIconGray" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 0
+offset_left = 15.36
+offset_right = 925.36
+offset_bottom = 910.0
+texture = ExtResource("6_fsh2r")
+
+[node name="song" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kk2u6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.27
+anchor_right = 0.27
+offset_left = -0.400024
+offset_top = 1.0
+offset_right = 49.6
+offset_bottom = 1081.0
+texture = ExtResource("8_ls82c")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 412.0
+offset_bottom = 136.0
+label_settings = ExtResource("10_ya7r7")

@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d4goodj31odof"]
+
+[ext_resource type="SystemFont" uid="uid://ci8dppwy6lcfw" path="res://fonts/Britanic Bold.tres" id="1_0mdji"]
+
+[resource]
+font = ExtResource("1_0mdji")
