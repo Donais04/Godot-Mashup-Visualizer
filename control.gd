@@ -61,22 +61,22 @@ func start(dA) -> void:
 	myName.visible = true
 	isActive = true
 	appearTime = appearTime/waveSpeed
-	#myIcon.position.x = 200
-	#myName.position.x = 100
+	myIcon.position.x = 200
+	myName.position.x = 100
 	print("timer for  " + dataArray[0] + " done")
 	waveTimer = 1.0/float(get_tree().root.get_child(0).wavesPerSecond)
-	#for i: int in dataArray[3]:
-		#var newWave = $wave.duplicate()
-		#add_child(newWave)
-		#myWaves.append(newWave)
-		#newWave.position.x = 1920
-		#if (i > 1):
-			#newWave.scale.x = 0.8*waveSpeed/float(get_tree().root.get_child(0).wavesPerSecond)
-			#newWave.visible = true
-			#newWave.scale.y = i*0.01 * (waveBoostVocals if dataArray[1] else 1.0)
-			#newWave.position.y = -1*i* (waveBoostVocals if dataArray[1] else 1.0) + 50
-		#await get_tree().create_timer(0.3335 / (float(get_tree().root.get_child(0).wavesPerSecond))).timeout
-		#await get_tree().create_timer(1.0 / (float(get_tree().root.get_child(0).wavesPerSecond))).timeout
+	for i: int in dataArray[3]:
+		var newWave = $wave.duplicate()
+		add_child(newWave)
+		myWaves.append(newWave)
+		newWave.position.x = 1920
+		if (i > 1):
+			newWave.scale.x = 0.8*waveSpeed/float(get_tree().root.get_child(0).wavesPerSecond)
+			newWave.visible = true
+			newWave.scale.y = i*0.01 * (waveBoostVocals if dataArray[1] else 1.0)
+			newWave.position.y = -1*i* (waveBoostVocals if dataArray[1] else 1.0) + 50
+		await get_tree().create_timer(0.3335 / (float(get_tree().root.get_child(0).wavesPerSecond))).timeout
+		await get_tree().create_timer(1.0 / (float(get_tree().root.get_child(0).wavesPerSecond))).timeout
 	await get_tree().create_timer(float(dataArray[3].size())/float(2*get_tree().root.get_child(0).wavesPerSecond)+11.0/waveSpeed).timeout
 	get_parent().removeFromQueue(self)
 	for i in range(10):
@@ -84,7 +84,8 @@ func start(dA) -> void:
 		myIcon.modulate.a += -0.1
 		await get_tree().create_timer(0.1).timeout
 	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
 func _process(delta: float) -> void:
 	if (isActive and wavIndex < dataArray[3].size()):
 		waveTimer -= delta
@@ -113,7 +114,7 @@ func _process(delta: float) -> void:
 	if (goTimer > 0):
 		position.y = ((queue)*spacing-startY) * pow((atan((1.0-goTimer) * PI/2)),0.5)+startY+10
 		goTimer += -1 * delta
-		#myName.text = str(queue) + ", " + str(startY).substr(0,5) + ", " + str(position.y).substr(0,5)
+		myName.text = str(queue) + ", " + str(startY).substr(0,5) + ", " + str(position.y).substr(0,5)
 	for i in range(myWaves.size()):
 		myWaves[i].position.x += -150.0*delta*waveSpeed
 	pass
